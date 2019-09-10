@@ -5,8 +5,8 @@
 	"description": "A Chrome extension that allows you to keep track of the Asana tasks you've worked on today.",
 	"permissions": ["tabs", "*://*.asana.com/*", "storage"],
 	"background": {
-		"scripts": ["background.js"], 
-		"persistent": false
+		"persistent": false,
+		"scripts": ["background.js"]
 	},
 	"content_scripts": [
 		{

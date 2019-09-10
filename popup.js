@@ -26,10 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   document.getElementById('view-list').addEventListener('click',
-    onClickView, false)
-    function onClickView() {
-      chrome.tabs.exexcuteScript({
-        file: 'view-list.js'
-        })
+    onViewList, false)
+    function onViewList() {
+      chrome.tabs.create({url:"list-tab.html"},
+        function(tabs){
+          chrome.tabs.sendMessage(tabs[0].id, 'view-list')
+      })
     }
 }, false)
