@@ -3,6 +3,5 @@ AsanaDaily is a chrome extension written in vanilla JS that allows you to collec
 Still a work in progress, feel free to contribute!
 
 Upcoming improvements:
-- Delete functionality (clearing storage, manually and automatically)
-- Design
+- Automatic delete functionality
 - Code cleanups
