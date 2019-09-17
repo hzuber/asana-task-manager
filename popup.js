@@ -10,8 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setTask(res) {
       const div = document.createElement('div');
+      div.setAttribute("class", "popupConfirm")
       
-      div.textContent = `${res} is the task`
+      div.textContent = `${res} has been added to your task list`
       document.body.appendChild(div);
     }
 

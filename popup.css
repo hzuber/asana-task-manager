@@ -1,0 +1,36 @@
+body{
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+}
+.popup-btn{
+    padding: 7px;
+    margin: 4px;
+    color: #151b26;
+    background-color: white;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 3px;
+    border: #ff5263 1px solid;
+    flex-basis: 90%;
+    flex-grow: 0;
+}
+.popup-btn:hover{
+    background: linear-gradient(to top right, #ff5263 0%, #ff7381 35%, #fcbd01 100%);
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+.popupConfirm{
+    padding: 7px;
+    margin: 4px;
+    color: #151b26;
+    background-color: white;
+    font-size: 10px;
+    border-radius: 3px;
+    border: #151b26 1px solid;
+    flex-basis: 90%;
+    flex-grow: 0;
+}
