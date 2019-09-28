@@ -34,8 +34,9 @@ h2{
     border-radius: 3px;
     max-width: 680px;
 }
-.title{
-    font-size: 18px;
+.title, .project, .status{
+    font-size: 16px;
+    font-weight: bolder;
 }
 #button-wrapper{
     display: flex;

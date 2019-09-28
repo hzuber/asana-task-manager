@@ -9,23 +9,38 @@ function getList() {
     console.log('get list')    
     chrome.storage.sync.get(null, function(taskList){
         const mainDiv = document.getElementById('jsId');
-        Object.values(taskList).map(task => {
+        Object.values(taskList).map((task, index) => {
             var ul = document.createElement('ul');
             ul.setAttribute("class", "task");
             var name = document.createElement('li');
-            name.setAttribute("class", "title");
+            name.setAttribute("class", "title-content");
+            var number = document.createElement('span');
+            name.appendChild(number);
+            var nameSpan = document.createElement('span');
+            name.appendChild(nameSpan);
+            nameSpan.setAttribute("class", "title");
             var project = document.createElement('li');
-            project.setAttribute("class", "project");
+            project.setAttribute("class", "project-span");
+            var projectSpan = document.createElement('span');
+            project.appendChild(projectSpan);
+            projectSpan.setAttribute("class", "project");
             var status = document.createElement('li');
-            status.setAttribute("class", "status");
+            status.setAttribute("class", "status-content");
+            var statusSpan = document.createElement('span');
+            status.appendChild(statusSpan);
+            statusSpan.setAttribute("class", "status");
             var url = document.createElement('li');
             var link = document.createElement('a');
             link.setAttribute("class", "url");
             link.setAttribute('href', `${task.url}`)
-            name.appendChild(document.createTextNode(`Task: ${task.task}`));
-            project.appendChild(document.createTextNode(`Project: ${task.project}`));
-            status.appendChild(document.createTextNode(`Status: ${task.column}`));
-            link.appendChild(document.createTextNode("Link"));
+            number.appendChild(document.createTextNode(`${index + 1}.`))
+            nameSpan.appendChild(document.createTextNode(`  Task: `));
+            name.appendChild(document.createTextNode(`${task.task}`));
+            projectSpan.appendChild(document.createTextNode(`Project: `));
+            project.appendChild(document.createTextNode(` ${task.project}`));
+            statusSpan.appendChild(document.createTextNode(`Status: `));
+            status.appendChild(document.createTextNode(`${task.column}`));
+            link.appendChild(document.createTextNode(`${task.url}`));
             url.appendChild(link);
             ul.appendChild(name);
             ul.appendChild(project);

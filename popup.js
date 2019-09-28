@@ -10,9 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setTask(res) {
       const div = document.createElement('div');
-      div.setAttribute("class", "popupConfirm")
-      
-      div.textContent = `${res} has been added to your task list`
+      div.setAttribute("class", "popupConfirm");
+      const p = document.createElement('p')
+      const span = document.createElement('span');
+      span.setAttribute("class", "popupConfirmSpan");
+      p.appendChild(document.createTextNode(`${res}`));
+      span.appendChild(document.createTextNode(" has been added to your task list"));
+      p.appendChild(span);
+      div.appendChild(p);
       document.body.appendChild(div);
     }
 
@@ -21,10 +26,22 @@ document.addEventListener('DOMContentLoaded', function () {
     function onClickDelete() {
       chrome.tabs.query({currentWindow: true, active: true},
         function(tabs){
-          chrome.tabs.sendMessage(tabs[0].id, 'delete-task')
+          chrome.tabs.sendMessage(tabs[0].id, 'delete-task', deleteTask)
         })
     }
 
+    function deleteTask(res) {
+      const div = document.createElement('div');
+      div.setAttribute("class", "popupConfirm")
+      const p = document.createElement('p')
+      const span = document.createElement('span');
+      span.setAttribute("class", "popupConfirmSpan");
+      p.appendChild(document.createTextNode(`${res}`));
+      span.appendChild(document.createTextNode(" has been deleted from your task list"));
+      p.appendChild(span);
+      div.appendChild(p);
+      document.body.appendChild(div);
+    }
 
   document.getElementById('view-list').addEventListener('click',
     onViewList, false)

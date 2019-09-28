@@ -30,7 +30,9 @@ body{
     background-color: white;
     font-size: 10px;
     border-radius: 3px;
-    border: #151b26 1px solid;
     flex-basis: 90%;
     flex-grow: 0;
+}
+.popupConfirmSpan{
+    font-weight: bolder;
 }

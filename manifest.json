@@ -1,5 +1,4 @@
 {
-	"name": "AsanaDaily", 
 	"version": "1.0",
 	"manifest_version": 2, 
 	"description": "A Chrome extension that allows you to keep track of the Asana tasks you've worked on today.",
@@ -16,6 +15,9 @@
 	],
 	"browser_action": {
 		"default_popup": "popup.html",
-		"default_title": "AsanaDaily"
-	}
+		"default_title": "AsanaDaily",
+		"default_icon" : "images/asanaDailyIcon.png"
+	},
+	"name": "AsanaDaily"
+
 }
