@@ -10,6 +10,9 @@ function getList() {
     chrome.storage.sync.get(null, function(taskList){
         const mainDiv = document.getElementById('jsId');
         Object.values(taskList).map((task, index) => {
+            var li = document.createElement('li');
+            li.setAttribute("class", "task-list-item")
+            li.setAttribute("key", `${index}`)
             var ul = document.createElement('ul');
             ul.setAttribute("class", "task");
             var name = document.createElement('li');
@@ -41,14 +44,36 @@ function getList() {
             statusSpan.appendChild(document.createTextNode(`Status: `));
             status.appendChild(document.createTextNode(`${task.column}`));
             link.appendChild(document.createTextNode(`${task.url}`));
+            var deleteBtn = document.createElement("div");
+            deleteBtn.setAttribute("class", "delete-task");
+            deleteBtn.setAttribute("key", `${task.url}`);
+            deleteBtn.addEventListener("click", deleteTask);
+            deleteBtn.appendChild(document.createTextNode('X'));
             url.appendChild(link);
             ul.appendChild(name);
             ul.appendChild(project);
             ul.appendChild(status);
             ul.appendChild(url);
-            mainDiv.appendChild(ul);
+            li.appendChild(ul);
+            li.appendChild(deleteBtn);
+            mainDiv.appendChild(li)
         });
     })
+}
+
+function deleteTask(){
+    console.log("clicked")
+    var key = this.getAttribute("key");
+    var taskKey = key.replace('https://app.asana.com/', '')
+    console.log(key)
+    chrome.storage.sync.remove(taskKey, function(){
+        var error = chrome.runtime.lastError;
+        if (error) {
+            alert(error);
+        } else {
+            location.reload();
+        }
+    });
 }
 
 function clearList(){
@@ -57,16 +82,19 @@ function clearList(){
         if (error) {
             alert(error);
         } else {
-            console.log('List cleared')
             location.reload();
         }
     })
 }
 
 function copyList(){
-    console.log('copyList clicked');
     var textArea = document.createElement("textarea");
-    textArea.value = document.querySelector("#jsId").innerText;
+    var textContent = document.querySelectorAll('.task');
+    console.log(textContent[3].innerText)
+    var copyText = "";
+    textContent.forEach(task => 
+        copyText += (task.innerText + "\n"));
+    textArea.value = copyText;
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();

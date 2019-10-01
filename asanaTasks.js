@@ -1,9 +1,13 @@
 chrome.runtime.onMessage.addListener(
   function (request, sender, sendResponse) {
     const taskArr = document.getElementsByClassName("autogrowTextarea-input");
-    const taskName = taskArr.length === 0 ? alert("Please click on the task you wish to add to or delete from your list.") : taskArr[0].innerHTML;
+    if(taskArr.length === 0) {
+      alert("Please click on the task you wish to add to or delete from your list.");
+      return false;
+    }
+    const taskName = taskArr[0].innerHTML;
+    console.log(taskName);
     const projectArr = document.getElementsByClassName("TaskProjectPill-projectName");
-    console.log(projectArr);
     const projectName = projectArr.length === 0 ? "N/A" : 
                         projectArr.length === 1 ? projectArr[0].firstChild.innerHTML : 
                         projectArr[0].innerHTML === projectArr[1].innerHTML ? projectArr[0].firstChild.innerHTML : 

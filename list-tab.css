@@ -24,15 +24,36 @@ h2{
 }
 #jsId{
     padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0px auto;
+    max-width: 700px;
+    margin: 0px auto;
+}
+.task-list-item{
+    display: flex;
+    max-width: 700px;
+    margin: 5px 0px;
 }
 .task{
+    width: 95%;
     list-style-type: none;
     font-size: 14px;
     padding: 10px;
-    margin: 5px auto;
     border: 1px solid grey;
     border-radius: 3px;
-    max-width: 680px;
+    margin-left: 5%;
+}
+.delete-task{
+    width: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    height: 26px;
+    text-align: center;
+    padding: 1px;
+    margin: 0px;
+    align-self: center;
 }
 .title, .project, .status{
     font-size: 16px;
