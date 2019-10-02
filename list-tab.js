@@ -90,7 +90,6 @@ function clearList(){
 function copyList(){
     var textArea = document.createElement("textarea");
     var textContent = document.querySelectorAll('.task');
-    console.log(textContent[3].innerText)
     var copyText = "";
     textContent.forEach(task => 
         copyText += (task.innerText + "\n"));
